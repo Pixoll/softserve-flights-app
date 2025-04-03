@@ -12,22 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Travelin"
         tools:targetApi="31">
+
         <activity
-            android:name=".modules.splashScreen.ui.SplashScreen"
-            android:exported="false"
-            android:label="@string/title_activity_splash_screen"
-            android:theme="@style/Theme.Travelin" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".modules.getStartedScreen.ui.GetStartedScreenActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_splash_screen"
             android:theme="@style/Theme.Travelin">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.Travelin"></activity>
     </application>
 
 </manifest>
