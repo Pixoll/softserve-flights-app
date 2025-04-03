@@ -54,7 +54,7 @@ fun UserInfo(user: User){
                             .clip(CircleShape)
                     )
                     }
-                val formattedPoints = NumberFormat.getNumberInstance(Locale.US).format(user.points)
+                val formattedPoints = NumberFormat.getNumberInstance(Locale.GERMANY).format(user.points)
                 Text(text = "$formattedPoints points",
                     style = MaterialTheme.typography.bodyMedium,
                     color = Color(0xFFFFC107))
