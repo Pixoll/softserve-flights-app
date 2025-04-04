@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,6 +21,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import dev.softserve.travelin.R
 import dev.softserve.travelin.ui.theme.TravelinTheme
 
 class SignInActivity : ComponentActivity() {
@@ -29,8 +31,9 @@ class SignInActivity : ComponentActivity() {
         setContent {
             TravelinTheme {
                 // Scaffold para acomodar la UI general y padding interno
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SignInScreen(modifier = Modifier.padding(innerPadding))
+                Scaffold(modifier = Modifier.fillMaxSize()) { modifier ->
+                    // SignInScreen(modifier = Modifier.padding(innerPadding))
+                    SignInScreen(modifier = Modifier)
                 }
             }
         }
@@ -97,6 +100,26 @@ fun SignInScreen(modifier: Modifier = Modifier) {
     }
 }
 
+//Imagen de fondo
+@Composable
+fun BackgroundImage(modifier: Modifier = Modifier) {
+    val image = painterResource(id = R.drawable.background_sign_in)
+    Image (
+        painter = image,
+        contentDescription = null,
+        modifier = modifier
+            .fillMaxSize()
+    )
+}
+
+@Preview
+@Composable
+fun BackgroundImagePreview() {
+    TravelinTheme {
+        BackgroundImage()
+    }
+}
+
 // Composable para el contenedor con fondo de pantalla
 @Composable
 fun BackgroundContainer(
@@ -107,9 +130,10 @@ fun BackgroundContainer(
     // Caja que aplica el color de fondo y ocupa todoo el tamaño
     Box(
         modifier = modifier
-            .fillMaxSize()
             .background(backgroundColor)
     ) {
+        // Imagen de fondo
+        BackgroundImage(modifier = Modifier.fillMaxSize())
         content()
     }
 }
