@@ -20,10 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             TravelinTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    Home(modifier = Modifier.padding(innerPadding))
                 }
             }
         }

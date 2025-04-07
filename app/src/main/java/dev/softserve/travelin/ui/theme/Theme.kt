@@ -1,8 +1,8 @@
 package dev.softserve.travelin.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -12,33 +12,47 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = Seaweed70,
+    secondary = MossGreen60,
+    tertiary = Grey70,
+    background = BackgroundDark,
+    primaryContainer = ContainerBackgroundDark,
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
-
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    primary = Seaweed30,
+    secondary = MossGreen30,
+    tertiary = Grey30,
+    background = BackgroundLight,
+    primaryContainer = ContainerBackgroundLight,
 )
+
+val ColorScheme.primaryText
+    @Composable
+    get() = if (isSystemInDarkTheme()) TextPrimaryDark else TextPrimaryLight
+
+val ColorScheme.invertedText
+    @Composable
+    get() = if (isSystemInDarkTheme()) TextPrimaryLight else TextPrimaryDark
+
+val ColorScheme.secondaryText
+    @Composable
+    get() = if (isSystemInDarkTheme()) TextSecondaryDark else TextSecondaryLight
+
+val ColorScheme.pointsText
+    @Composable
+    get() = if (isSystemInDarkTheme()) Yellow80 else Yellow50
+
+val ColorScheme.ticketArrow
+    @Composable
+    get() = if (isSystemInDarkTheme()) TicketArrowDark else TicketArrowLight
 
 @Composable
 fun TravelinTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
-    content: @Composable () -> Unit
+    dynamicColor: Boolean = false,
+    content: @Composable () -> Unit,
 ) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
@@ -53,6 +67,6 @@ fun TravelinTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
-        content = content
+        content = content,
     )
 }
